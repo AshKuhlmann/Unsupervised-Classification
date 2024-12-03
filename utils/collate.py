@@ -6,7 +6,8 @@ import torch
 import numpy as np
 import collections
 from torch._six import string_classes
-from collections.abc import Mapping # attempt to address: "module collections has no attribute mapping"
+from collections.abc import Mapping # addresses: "module collections has no attribute mapping" error
+from collections.abc import Sequence # attempt to address: "module collections has no attribute sequence" error
 
 
 """ Custom collate function """
@@ -29,11 +30,11 @@ def collate_custom(batch):
     elif isinstance(batch[0], string_classes):
         return batch
 
-    elif isinstance(batch[0], collections.abc.Mapping): # attempt to address: "module collections has no attribute mapping"
+    elif isinstance(batch[0], collections.abc.Mapping): # addresses: "module collections has no attribute mapping" error
         batch_modified = {key: collate_custom([d[key] for d in batch]) for key in batch[0] if key.find('idx') < 0}
         return batch_modified
 
-    elif isinstance(batch[0], collections.Sequence):
+    elif isinstance(batch[0], collections.abc.Sequence): # attempt to address: "module collections has no attribute sequence" error
         transposed = zip(*batch)
         return [collate_custom(samples) for samples in transposed]
 
