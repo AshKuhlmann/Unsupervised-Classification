@@ -6,6 +6,7 @@ import argparse
 import os
 import torch
 import numpy as np
+from collections.abc import Mapping # addresses bug: "module collections has no attribute mapping"
 
 from utils.config import create_config
 from utils.common_config import get_criterion, get_model, get_train_dataset,\
