@@ -2,12 +2,13 @@
 Authors: Wouter Van Gansbeke, Simon Vandenhende
 Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by-nc/4.0/)
 """
-import argparse
-import os
-import torch
+import argparse # tool for parsing command-line arguments
+import os # tool for interacting with the operating system
+import torch # Python library for deep learning
 import numpy as np
 
-from utils.config import create_config
+from utils.config import create_config # import the create_config method
+    # from utils/config.py
 from utils.common_config import get_criterion, get_model, get_train_dataset,\
                                 get_val_dataset, get_train_dataloader,\
                                 get_val_dataloader, get_train_transformations,\
@@ -20,17 +21,19 @@ from utils.utils import fill_memory_bank
 from termcolor import colored
 
 # Parser
-parser = argparse.ArgumentParser(description='SimCLR')
+parser = argparse.ArgumentParser(description='SimCLR') # create an ArgumentParser object
 parser.add_argument('--config_env',
                     help='Config file for the environment')
 parser.add_argument('--config_exp',
                     help='Config file for the experiment')
-args = parser.parse_args()
+args = parser.parse_args() # parses the cmd-line args provided by the user
+    # stores the parsed objects in the args object
 
 def main():
 
     # Retrieve config file
     p = create_config(args.config_env, args.config_exp)
+        # calls custom function called create_config file
     print(colored(p, 'red'))
     
     # Model

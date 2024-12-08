@@ -7,6 +7,7 @@ import yaml
 from easydict import EasyDict
 from utils.utils import mkdir_if_missing
 
+# create_config method loads configuration files from two YAML files
 def create_config(config_file_env, config_file_exp):
     # Config for environment path
     with open(config_file_env, 'r') as stream:
