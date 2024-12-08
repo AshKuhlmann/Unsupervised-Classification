@@ -18,7 +18,7 @@ criterion_kwargs:
    temperature: 0.1 
 
 # Hyperparameters
-epochs: 20 # default 500
+epochs: 40 # default 500
 optimizer: sgd
 optimizer_kwargs:
    nesterov: False
